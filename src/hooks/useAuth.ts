@@ -6,7 +6,7 @@ export const useAuth = () => {
   const register = async (name: string, email: string, password: string) => {
     try {
       setLoading(true);
-      const response = await registerUser(name, email, password);
+      await registerUser(name, email, password);
     } catch (error) {
       console.error("Error during registration:", error);
       throw error;
@@ -19,7 +19,8 @@ export const useAuth = () => {
     try {
       setLoading(true);
       const response = await loginUser(email, password);
-      setUser(response.user);
+
+      setUser(response);
     } catch (error) {
       console.error("Error during login:", error);
       throw error;

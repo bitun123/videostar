@@ -1,8 +1,14 @@
 import { create } from "zustand";
 
+type AuthUser = {
+  id: string;
+  email: string | null;
+  name: string | null;
+};
+
 type AuthState = {
-  user: string | null;
-  setUser: (user: string | null) => void;
+  user: AuthUser | null;
+  setUser: (user: AuthUser | null) => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
 };
@@ -10,6 +16,6 @@ type AuthState = {
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   setUser: (user) => set({ user }),
-    loading: false,
-    setLoading: (loading) => set({ loading }),
+  loading: false,
+  setLoading: (loading) => set({ loading }),
 }));

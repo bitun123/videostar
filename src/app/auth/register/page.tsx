@@ -1,9 +1,12 @@
 "use client";
 
 import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
 
 function Registerpage() {
+  const router = useRouter();
+
   const { register, loading } = useAuth();
 
   const fromRef = useRef<HTMLFormElement>(null);
@@ -19,6 +22,7 @@ function Registerpage() {
     };
     try {
       await register(data.name, data.email, data.password);
+      router.push("/login");
     } catch (error) {
       console.error("Error during registration:", error);
     }
