@@ -7,7 +7,7 @@ export default function HomePage() {
   const [progress, setProgress] = useState(0);
 
   const handleUploadSuccess = (res: any) => {
-    console.log("Upload Success:", res);
+    console.log("Upload successful:", res);
   };
 
   const handleProgress = (value: number) => {

@@ -1,13 +1,11 @@
 "use client"; // This component must be a client component
 
-import {
-  upload,
-} from "@imagekit/next";
+import { upload } from "@imagekit/next";
 import axios from "axios";
-import {  useState } from "react";
+import { useState } from "react";
 
 const publickKey = process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!;
-if(publickKey === undefined) {
+if (publickKey === undefined) {
   throw new Error(
     "NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY is not defined in the environment variables.",
   );
@@ -57,9 +55,9 @@ const FileUpload = ({
         file,
         fileName: file.name,
         publicKey: publickKey,
-       signature: response.data.authenticationParameters.signature,
-expire: response.data.authenticationParameters.expire,
-token: response.data.authenticationParameters.token,
+        signature: response.data.authenticationParameters.signature,
+        expire: response.data.authenticationParameters.expire,
+        token: response.data.authenticationParameters.token,
         onProgress: (event) => {
           if (event.lengthComputable && onProgress) {
             const progress = Math.round((event.loaded / event.total) * 100);
