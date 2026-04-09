@@ -35,7 +35,7 @@ class APIClient {
   }
 
   async getVideos() {
-    return this.fetch("/videos");
+    return this.fetch("/video");
   }
 
   async createVideo(videoData: videotypeData) {

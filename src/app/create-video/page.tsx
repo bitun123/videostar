@@ -50,32 +50,36 @@ export default function HomePage() {
   };
 
   return (
-    <div className="p-5">
-      <FileUpload
-        fileTypes="Video"
-        onUploadSuccess={handleUploadSuccess}
-        onProgress={handleProgress}
-      />
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Title"
-          name="title"
-          value={videoTitle}
-          onChange={(e) => settitle(e.target.value)}
+    <div className="p-5 w-full  min-h-screen flex flex-col items-center justify-center bg-white">
+      <div className="w-full max-w-md p-5 border rounded-lg shadow-md bg-gray-400" >
+        <FileUpload
+          fileTypes="Video"
+          onUploadSuccess={handleUploadSuccess}
+          onProgress={handleProgress}
         />
-        <input
-          type="text"
-          placeholder="Description"
-          name="description"
-          value={videoDescription}
-          onChange={(e) => setdescription(e.target.value)}
-        />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-4">
+          <input
+            type="text"
+            placeholder="Title"
+            name="title"
+            value={videoTitle}
+            onChange={(e) => settitle(e.target.value)}
+               
+          />
+          <input
+            type="text"
+            placeholder="Description"
+            name="description"
+            value={videoDescription}
+            onChange={(e) => setdescription(e.target.value)}
+            className="px-2 py-2 border-none rounded bg-gray-600 text-white outline-none " 
+          />
 
-        <button type="submit">Upload Video</button>
-      </form>
+          <button type="submit">Upload Video</button>
+        </form>
 
-      <p>Progress: {progress}%</p>
+        <p>Progress: {progress}%</p>
+      </div>
     </div>
   );
 }

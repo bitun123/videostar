@@ -1,13 +1,12 @@
 import { Ivideo } from "@/models/video.model";
 import { create } from "zustand";
 
-
 type VideoStore = {
   videoData: Ivideo;
+  videos: Ivideo[];
   setVideoData: (data: Partial<Ivideo>) => void;
+  setVideos: (videos: Ivideo[]) => void;
 };
-
-
 
 export const useVideoStore = create<VideoStore>((set) => ({
   videoData: {
@@ -22,6 +21,8 @@ export const useVideoStore = create<VideoStore>((set) => ({
       quality: null as unknown as number,
     },
   },
+  videos: [],
   setVideoData: (data) =>
     set((state) => ({ videoData: { ...state.videoData, ...data } })),
+  setVideos: (videos) => set({ videos }),
 }));

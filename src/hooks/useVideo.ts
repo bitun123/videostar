@@ -5,14 +5,15 @@ import { useVideoStore } from "@/store/videoStore";
 
 export const useVideo = () => {
   const { loading, setLoading } = useAuthStore();
-
-  const { videoData, setVideoData } = useVideoStore();
+  const { videoData, videos, setVideoData, setVideos } = useVideoStore();
 
   const upLoadVideo = async (videoData: Ivideo) => {
     try {
       setLoading(true);
       const response = await apiClient.createVideo(videoData);
-      setVideoData(response);
+      // After upload, we might want to refresh the list or just add the new video
+      await getAllVideos(); 
+      return response;
     } catch (error) {
       console.error("Error uploading video:", error);
       throw error;
@@ -23,8 +24,9 @@ export const useVideo = () => {
 
   const getAllVideos = async () => {
     try {
+      setLoading(true);
       const response = await apiClient.getVideos();
-      setVideoData(response.videos);
+      setVideos(response.videos);
     } catch (error) {
       console.error("Error fetching videos:", error);
       throw error;
@@ -35,6 +37,7 @@ export const useVideo = () => {
 
   return {
     videoData,
+    videos,
     loading,
     upLoadVideo,
     getAllVideos,
