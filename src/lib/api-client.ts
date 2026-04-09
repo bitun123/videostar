@@ -39,7 +39,7 @@ class APIClient {
   }
 
   async createVideo(videoData: videotypeData) {
-    return this.fetch("/videos", {
+    return this.fetch("/video", {
       method: "POST",
       body: videoData,
     });

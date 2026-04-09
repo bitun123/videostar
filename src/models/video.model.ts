@@ -10,7 +10,7 @@ export interface Ivideo {
   title: string;
   description: string;
   videoUrl: string;
-  thumbnailUrl: string;
+  thumbnailUrl?: string;
   controls: boolean;
   transformation?: {
     width: number;
@@ -37,7 +37,7 @@ const videoSchema = new mongoose.Schema<Ivideo>(
     },
     thumbnailUrl: {
       type: String,
-      required: [true, "Thumbnail URL is required"],
+      
     },
     controls: {
       type: Boolean,
