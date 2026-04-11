@@ -1,10 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f0f0f;
-  --foreground: #f1f1f1;
-  --surface: #1e1e1e;
+  --background: #131313;
+  --foreground: #e5e2e1;
+  --surface: #1c1b1b;
   --surface-hover: #2a2a2a;
+  --primary: #ffffff;
+  --on-surface-variant: #c6c6c6;
+  --border-dim: rgba(255, 255, 255, 0.05);
+  --glass-bg: rgba(19, 19, 19, 0.7);
 }
 
 @theme inline {
@@ -12,19 +16,22 @@
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
-  --font-sans: var(--font-geist-sans);
+  --color-primary: var(--primary);
+  --color-on-variant: var(--on-surface-variant);
+  --font-sans: "Inter", var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: "Inter", var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  letter-spacing: -0.01em;
 }
 
 /* Custom scrollbar for premium feel */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -32,10 +39,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--surface);
+  background: var(--surface-hover);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--surface-hover);
+  background: var(--on-surface-variant);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-dim);
 }
